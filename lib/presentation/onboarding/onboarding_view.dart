@@ -10,7 +10,7 @@ import '../resources/assets_manager.dart';
 import '../resources/color_manager.dart';
 
 class OnboardingView extends StatefulWidget {
-  const OnboardingView({super.key});
+  const OnboardingView({Key? key}) : super(key: key);
 
   @override
   State<OnboardingView> createState() => _OnboardingViewState();
