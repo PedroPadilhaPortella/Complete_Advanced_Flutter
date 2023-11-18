@@ -19,6 +19,7 @@ dependencies:
   json_annotation: ^4.6.0
   dartz: ^0.10.0
   internet_connection_checker: ^1.0.0
+  pretty_dio_logger: ^1.2.0-beta-1
 
 dev_dependencies:
   flutter_test:
