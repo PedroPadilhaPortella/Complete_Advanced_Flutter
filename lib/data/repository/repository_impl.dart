@@ -1,11 +1,14 @@
 import 'package:complete_advanced_flutter/data/data_source/data_source.dart';
 import 'package:complete_advanced_flutter/data/mapper/mapper.dart';
+import 'package:complete_advanced_flutter/data/error_handler/error_handler.dart';
 import 'package:complete_advanced_flutter/data/network/network_info.dart';
 import 'package:complete_advanced_flutter/domain/model.dart';
 import 'package:complete_advanced_flutter/data/request/request.dart';
 import 'package:complete_advanced_flutter/data/network/failure.dart';
 import 'package:complete_advanced_flutter/domain/repository.dart';
 import 'package:dartz/dartz.dart';
+
+import '../error_handler/error_manager.dart';
 
 class RepositortImpl extends Repository {
   RemoteDataSource _remoteDataSource;
@@ -15,18 +18,26 @@ class RepositortImpl extends Repository {
 
   @override
   Future<Either<Failure, Authentication>> login(
-      LoginRequest loginRequest) async {
+    LoginRequest loginRequest,
+  ) async {
     if (await _networkInfo.isConnected) {
-      final response = await _remoteDataSource.login(loginRequest);
-      if (response.status == 0) {
-        return Right(response.toDomain());
-      } else {
-        return Left(Failure(409,
-            response.message ?? 'An bussiness error on api side ocurred.'));
+      try {
+        final response = await _remoteDataSource.login(loginRequest);
+        if (response.status == ApiInternalStatus.SUCCESS) {
+          return Right(response.toDomain());
+        } else {
+          return Left(
+            Failure(
+              response.status ?? ApiInternalStatus.FAILURE,
+              response.message ?? ResponseMessage.DEFAULT,
+            ),
+          );
+        }
+      } catch (error) {
+        return Left(ErrorHandler.handle(error).failure);
       }
     } else {
-      return Left(Failure(
-          409, 'An error ocurred, please check your internet connection.'));
+      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
     }
   }
 }
