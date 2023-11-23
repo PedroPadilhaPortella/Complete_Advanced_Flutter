@@ -10,11 +10,11 @@ import 'package:dartz/dartz.dart';
 
 import '../error_handler/error_manager.dart';
 
-class RepositortImpl extends Repository {
+class RepositoryImpl extends Repository {
   RemoteDataSource _remoteDataSource;
   NetworkInfo _networkInfo;
 
-  RepositortImpl(this._remoteDataSource, this._networkInfo);
+  RepositoryImpl(this._remoteDataSource, this._networkInfo);
 
   @override
   Future<Either<Failure, Authentication>> login(

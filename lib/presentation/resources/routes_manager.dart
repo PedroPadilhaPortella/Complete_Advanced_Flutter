@@ -1,3 +1,4 @@
+import 'package:complete_advanced_flutter/app/dependency_injection.dart';
 import 'package:flutter/material.dart';
 
 import './strings_manager.dart';
@@ -25,6 +26,7 @@ class RouteGenerator {
       case Routes.splashRoute:
         return MaterialPageRoute(builder: (_) => const SplashView());
       case Routes.loginRoute:
+        initLoginModule();
         return MaterialPageRoute(builder: (_) => const LoginView());
       case Routes.onboardingRoute:
         return MaterialPageRoute(builder: (_) => const OnboardingView());
