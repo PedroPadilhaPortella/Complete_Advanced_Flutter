@@ -8,7 +8,8 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post('/customers/login', (req, res) => {
-  return res.json(loginResponseMock);
+  console.log(req.body)
+  return res.status(200).json(loginResponseMock);
 })
 
 app.listen(port, () => {

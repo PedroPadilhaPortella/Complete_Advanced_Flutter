@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:complete_advanced_flutter/presentation/base/base_view_model.dart';
+import 'package:complete_advanced_flutter/presentation/common/state_render/state_render.dart';
+import 'package:complete_advanced_flutter/presentation/common/state_render/state_render_impl.dart';
 
 import '../../domain/usecase/login_usecase.dart';
 import '../common/freezed_data_classes.dart';
@@ -27,18 +29,20 @@ class LoginViewModel extends BaseViewModel
 
   LoginUseCase _loginUseCase;
 
-  StreamController _userNameStreamController =
+  final StreamController _userNameStreamController =
       StreamController<String>.broadcast();
-  StreamController _passwordStreamController =
+  final StreamController _passwordStreamController =
       StreamController<String>.broadcast();
-  StreamController _isAllInputsValidStreamController =
+  final StreamController _isAllInputsValidStreamController =
       StreamController<void>.broadcast();
 
   LoginViewModel(this._loginUseCase);
 
   /* Lifecycle Methods */
   @override
-  void start() {}
+  void start() {
+    inputState.add(ContentState());
+  }
 
   @override
   void dispose() {
@@ -64,13 +68,23 @@ class LoginViewModel extends BaseViewModel
 
   @override
   login() async {
+    inputState.add(
+      LoadingState(stateRendererType: StateRendererType.POPUP_LOADING_STATE),
+    );
     (await _loginUseCase.execute(LoginUsecaseInput(
       loginObject.userName,
       loginObject.password,
     )))
         .fold(
-      (failure) => print(failure.message),
-      (data) => print(data.customer?.name),
+      (failure) {
+        inputState.add(
+          ErrorState(StateRendererType.POPUP_ERROR_STATE, failure.message),
+        );
+      },
+      (data) {
+        inputState.add(ContentState());
+        // navigate to main screen after login
+      },
     );
   }
 

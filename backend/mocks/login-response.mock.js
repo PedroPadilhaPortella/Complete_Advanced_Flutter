@@ -1,6 +1,6 @@
 module.exports = {
     status: 0,
-    message: "Succes",
+    message: "Success",
     customer: {
         id: "001",
         name: "Pedro Padilha Portella",
