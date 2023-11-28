@@ -17,6 +17,11 @@ class AppStrings {
 
   static const String skip = 'Skip';
 
+  // State Render
+  static const String loading = 'Loading...';
+  static const String retry_again = 'Retry Again';
+  static const String ok = 'Ok';
+
   // Login Screen
   static const String username = "Username";
   static const String usernameError = "Username is wrong";
@@ -26,8 +31,8 @@ class AppStrings {
   static const String forgetPassword = "Forget password";
   static const String registerText = "Not a member? Sign up";
 
-  // State Render
-  static const String loading = 'Loading...';
-  static const String retry_again = 'Retry Again';
-  static const String ok = 'Ok';
+  // Forgot Password Screen
+  static const String emailHint = 'Email';
+  static const String invalidEmail = "Invalid Email";
+  static const String resetPassword = "Reset Password";
 }
