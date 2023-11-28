@@ -13,7 +13,7 @@ class _AppServiceClient implements AppServiceClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'http://localhost:3000';
+    baseUrl ??= 'http://10.0.2.2:3000';
   }
 
   final Dio _dio;

@@ -1,3 +1,4 @@
+import 'package:complete_advanced_flutter/app/app_preferences.dart';
 import 'package:complete_advanced_flutter/app/dependency_injection.dart';
 import 'package:complete_advanced_flutter/presentation/common/state_render/state_render_impl.dart';
 import 'package:complete_advanced_flutter/presentation/login/login_view_model.dart';
@@ -5,6 +6,7 @@ import 'package:complete_advanced_flutter/presentation/resources/color_manager.d
 import 'package:complete_advanced_flutter/presentation/resources/strings_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 import '../resources/assets_manager.dart';
 import '../resources/routes_manager.dart';
@@ -17,10 +19,11 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  LoginViewModel _viewModel = instance<LoginViewModel>();
+  final LoginViewModel _viewModel = instance<LoginViewModel>();
+  final AppPreferences _appPreferences = instance<AppPreferences>();
 
-  TextEditingController _userNameController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
 
@@ -43,6 +46,14 @@ class _LoginViewState extends State<LoginView> {
         .addListener(() => _viewModel.setUserName(_userNameController.text));
     _passwordController
         .addListener(() => _viewModel.setPassword(_passwordController.text));
+
+    _viewModel.isUserLoggedInSuccessfullyStreamController.stream
+        .listen((isSuccessfullyLoggedIn) {
+      SchedulerBinding.instance.addPostFrameCallback((_) {
+        _appPreferences.setUserLoggedIn();
+        Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
+      });
+    });
   }
 
   @override

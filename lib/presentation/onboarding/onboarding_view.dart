@@ -1,3 +1,5 @@
+import 'package:complete_advanced_flutter/app/app_preferences.dart';
+import 'package:complete_advanced_flutter/app/dependency_injection.dart';
 import 'package:complete_advanced_flutter/presentation/onboarding/onboarding_view_model.dart';
 import 'package:complete_advanced_flutter/presentation/resources/strings_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/values_manager.dart';
@@ -20,6 +22,7 @@ class OnboardingView extends StatefulWidget {
 class _OnboardingViewState extends State<OnboardingView> {
   final PageController _pageController = PageController(initialPage: 0);
   final OnboardingViewModel _viewModel = OnboardingViewModel();
+  final AppPreferences _appPreferences = instance<AppPreferences>();
 
   /* LifeCycle Methods */
 
@@ -48,6 +51,7 @@ class _OnboardingViewState extends State<OnboardingView> {
   /* Private Methods */
 
   _bind() {
+    _appPreferences.setOnboardingScreenViewed();
     _viewModel.start();
   }
 
