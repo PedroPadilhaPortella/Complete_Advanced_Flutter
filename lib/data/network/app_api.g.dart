@@ -13,7 +13,6 @@ class _AppServiceClient implements AppServiceClient {
     this._dio, {
     this.baseUrl,
   }) {
-    // baseUrl ??= 'http://10.0.2.2:3000';
     baseUrl ??= 'http://localhost:3000';
   }
 
@@ -46,6 +45,43 @@ class _AppServiceClient implements AppServiceClient {
             .compose(
               _dio.options,
               '/customers/login',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = AuthenticationResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<AuthenticationResponse> register(
+    countryMobileCode,
+    userName,
+    email,
+    password,
+    mobileNumber,
+    profilePicture,
+  ) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = {
+      'country_mobile_code': countryMobileCode,
+      'user_name': userName,
+      'email': email,
+      'password': password,
+      'mobile_number': mobileNumber,
+      'profile_picture': profilePicture,
+    };
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<AuthenticationResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/customers/register',
               queryParameters: queryParameters,
               data: _data,
             )
