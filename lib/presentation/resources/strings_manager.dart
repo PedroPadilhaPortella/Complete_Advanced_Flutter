@@ -34,6 +34,11 @@ class AppStrings {
 
   // Forgot Password Screen
   static const String emailHint = 'Email';
-  static const String invalidEmail = "Invalid Email";
   static const String resetPassword = "Reset Password";
+
+  // Register Screen
+  static const String invalidUsername = "Invalid Username";
+  static const String invalidEmail = "Invalid Email";
+  static const String invalidMobileNumber = "Invalid Mobile Number";
+  static const String invalidPassword = "Invalid Password";
 }

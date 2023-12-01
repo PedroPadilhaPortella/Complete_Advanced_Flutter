@@ -18,11 +18,11 @@ class RegisterUseCase
   ) async {
     return await _repository.register(
       RegisterRequest(
-        input.countryMobileCode,
         input.userName,
         input.email,
         input.password,
         input.mobileNumber,
+        input.countryMobileCode,
         input.profilePicture,
       ),
     );
@@ -30,19 +30,19 @@ class RegisterUseCase
 }
 
 class RegisterUsecaseInput {
-  String countryMobileCode;
   String userName;
   String email;
   String password;
   String mobileNumber;
+  String countryMobileCode;
   String profilePicture;
 
   RegisterUsecaseInput(
-    this.countryMobileCode,
     this.userName,
     this.email,
     this.password,
     this.mobileNumber,
+    this.countryMobileCode,
     this.profilePicture,
   );
 }

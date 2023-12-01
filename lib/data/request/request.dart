@@ -8,19 +8,19 @@ class LoginRequest {
 }
 
 class RegisterRequest {
-  String countryMobileCode;
   String userName;
   String email;
   String password;
   String mobileNumber;
+  String countryMobileCode;
   String profilePicture;
 
   RegisterRequest(
-    this.countryMobileCode,
     this.userName,
     this.email,
     this.password,
     this.mobileNumber,
+    this.countryMobileCode,
     this.profilePicture,
   );
 }
