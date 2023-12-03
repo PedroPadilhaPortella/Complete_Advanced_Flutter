@@ -58,6 +58,7 @@ ThemeData getApplicationTheme() {
       ),
       caption: getRegularStyle(color: ColorManager.grey1),
       bodyText1: getRegularStyle(color: ColorManager.grey),
+      // labelSmall: getRegularStyle(color: ColorManager.grey),
     ),
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: const EdgeInsets.all(AppPadding.p8),

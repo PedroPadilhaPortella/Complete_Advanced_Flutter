@@ -12,6 +12,7 @@ import 'package:complete_advanced_flutter/presentation/forgot_password/forgot_pa
 import 'package:complete_advanced_flutter/presentation/login/login_view_model.dart';
 import 'package:complete_advanced_flutter/presentation/register/register_view_model.dart';
 import 'package:get_it/get_it.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final instance = GetIt.instance;
@@ -70,5 +71,6 @@ initRegisterModule() {
     instance.registerFactory<RegisterViewModel>(
       () => RegisterViewModel(instance()),
     );
+    instance.registerFactory<ImagePicker>(() => ImagePicker());
   }
 }
