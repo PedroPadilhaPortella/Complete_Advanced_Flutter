@@ -31,4 +31,7 @@ abstract class AppServiceClient {
   Future<ForgotPasswordResponse> forgotPassword(
     @Field("email") String email,
   );
+
+  @GET("/home")
+  Future<HomeResponse> getHome();
 }

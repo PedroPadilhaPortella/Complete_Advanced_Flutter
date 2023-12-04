@@ -36,3 +36,42 @@ class DeviceInfo {
 
   DeviceInfo(this.name, this.identifier, this.version);
 }
+
+class Service {
+  int id;
+  String title;
+  String image;
+
+  Service(this.id, this.title, this.image);
+}
+
+class Banner {
+  int id;
+  String title;
+  String link;
+  String image;
+
+  Banner(this.id, this.title, this.link, this.image);
+}
+
+class Store {
+  int id;
+  String title;
+  String image;
+
+  Store(this.id, this.title, this.image);
+}
+
+class HomeData {
+  List<Service> services;
+  List<Banner> banners;
+  List<Store> stores;
+
+  HomeData(this.services, this.banners, this.stores);
+}
+
+class HomeObject {
+  HomeData data;
+
+  HomeObject(this.data);
+}

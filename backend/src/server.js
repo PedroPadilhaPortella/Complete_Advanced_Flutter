@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const loginResponseMock = require("../mocks/login-response.mock");
 const registerResponseMock = require("../mocks/register-response.mock");
 const forgotPasswordResponseMock = require("../mocks/forgot-password-response.mock");
+const homeResponseMock = require("../mocks/home-response.mock");
 
 const port = 3000
 const app = express();
@@ -23,6 +24,11 @@ app.post('/customers/register', (req, res) => {
 app.post('/customers/forgotPassword', (req, res) => {
   console.log(req.body)
   return res.status(200).json(forgotPasswordResponseMock);
+});
+
+app.get('/home', (req, res) => {
+  console.log(req.body)
+  return res.status(200).json(homeResponseMock);
 });
 
 app.listen(port, () => {
