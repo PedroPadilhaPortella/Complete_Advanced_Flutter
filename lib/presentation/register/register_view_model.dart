@@ -64,6 +64,9 @@ class RegisterViewModel extends BaseViewModel
   final StreamController _isAllInputsValidStreamController =
       StreamController<void>.broadcast();
 
+  final StreamController isUserLoggedInSuccessfullyStreamController =
+      StreamController<bool>();
+
   RegisterViewModel(this._registerUseCase);
 
   /* Lifecycle Methods */
@@ -80,6 +83,7 @@ class RegisterViewModel extends BaseViewModel
     _passwordStreamController.close();
     _profilePictureStreamController.close();
     _isAllInputsValidStreamController.close();
+    isUserLoggedInSuccessfullyStreamController.close();
     super.dispose();
   }
 
@@ -172,8 +176,7 @@ class RegisterViewModel extends BaseViewModel
       },
       (data) {
         inputState.add(ContentState());
-
-        // navigate to main screen after the login
+        isUserLoggedInSuccessfullyStreamController.add(true);
       },
     );
   }
