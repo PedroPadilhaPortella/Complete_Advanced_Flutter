@@ -41,6 +41,7 @@ class _RegisterViewState extends State<RegisterView> {
   final TextEditingController _passwordEditingController =
       TextEditingController();
 
+  /* LifeCycle Methods */
   @override
   void initState() {
     _bind();

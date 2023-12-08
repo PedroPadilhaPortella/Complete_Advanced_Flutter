@@ -51,8 +51,8 @@ extension ServiceResponseMapper on ServiceResponse? {
 }
 
 extension BannerResponseMapper on BannerResponse? {
-  Banner toDomain() {
-    return Banner(
+  BannerAd toDomain() {
+    return BannerAd(
       this?.id?.orZero() ?? ZERO,
       this?.title?.orEmpty() ?? EMPTY,
       this?.link?.orEmpty() ?? EMPTY,
@@ -85,10 +85,10 @@ extension HomeResponseMapper on HomeResponse? {
             .cast<Store>()
             .toList();
 
-    List<Banner> mappedBanners =
-        (this?.data?.stores?.map((banner) => banner.toDomain()) ??
+    List<BannerAd> mappedBanners =
+        (this?.data?.banners?.map((banner) => banner.toDomain()) ??
                 Iterable.empty())
-            .cast<Banner>()
+            .cast<BannerAd>()
             .toList();
 
     var data = HomeData(mappedServices, mappedBanners, mappedStores);

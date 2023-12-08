@@ -25,11 +25,22 @@ class _OnboardingViewState extends State<OnboardingView> {
   final AppPreferences _appPreferences = instance<AppPreferences>();
 
   /* LifeCycle Methods */
-
   @override
   void initState() {
     _bind();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _viewModel.dispose();
+    super.dispose();
+  }
+
+  /* Private Methods */
+  _bind() {
+    _appPreferences.setOnboardingScreenViewed();
+    _viewModel.start();
   }
 
   @override
@@ -40,19 +51,6 @@ class _OnboardingViewState extends State<OnboardingView> {
         return _getContentWidget(snapshot.data);
       },
     );
-  }
-
-  @override
-  void dispose() {
-    _viewModel.dispose();
-    super.dispose();
-  }
-
-  /* Private Methods */
-
-  _bind() {
-    _appPreferences.setOnboardingScreenViewed();
-    _viewModel.start();
   }
 
   Widget _getContentWidget(SlideViewObject? slideViewObject) {

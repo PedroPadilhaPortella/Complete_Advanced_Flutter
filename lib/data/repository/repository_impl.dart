@@ -91,8 +91,7 @@ class RepositoryImpl extends Repository {
       try {
         final response = await _remoteDataSource.getHome();
 
-        if (response.status == ApiInternalStatus.SUCCESS) // success
-        {
+        if (response.status == ApiInternalStatus.SUCCESS) {
           return Right(response.toDomain());
         } else {
           return Left(Failure(
