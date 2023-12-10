@@ -5,6 +5,7 @@ const loginResponseMock = require("../mocks/login-response.mock");
 const registerResponseMock = require("../mocks/register-response.mock");
 const forgotPasswordResponseMock = require("../mocks/forgot-password-response.mock");
 const homeResponseMock = require("../mocks/home-response.mock");
+const storeDetailsResponseMock = require("../mocks/store-details-response.mock");
 
 const port = 3000
 const app = express();
@@ -27,8 +28,13 @@ app.post('/customers/forgotPassword', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
-  console.log(req.body)
   return res.status(200).json(homeResponseMock);
+});
+
+app.get('/storeDetails/:id', (req, res) => {
+  const id = req.params.id
+  console.log(id)
+  return res.status(200).json(storeDetailsResponseMock[id - 1]);
 });
 
 app.listen(port, () => {

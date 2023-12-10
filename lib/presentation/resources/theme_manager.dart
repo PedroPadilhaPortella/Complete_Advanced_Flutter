@@ -64,6 +64,7 @@ ThemeData getApplicationTheme() {
         color: ColorManager.primary,
         fontSize: FontSize.s14,
       ),
+      bodyText2: getMediumStyle(color: ColorManager.lightGrey),
       caption: getRegularStyle(color: ColorManager.grey1),
       bodyText1: getRegularStyle(color: ColorManager.grey),
       // labelSmall: getRegularStyle(color: ColorManager.grey),
