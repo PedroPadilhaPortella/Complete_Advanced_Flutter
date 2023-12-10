@@ -1,5 +1,6 @@
 import 'package:complete_advanced_flutter/app/app_preferences.dart';
-import 'package:complete_advanced_flutter/data/data_source/data_source.dart';
+import 'package:complete_advanced_flutter/data/data_source/local_data_source.dart';
+import 'package:complete_advanced_flutter/data/data_source/remote_data_source.dart';
 import 'package:complete_advanced_flutter/data/network/app_api.dart';
 import 'package:complete_advanced_flutter/data/network/dio_factory.dart';
 import 'package:complete_advanced_flutter/data/network/network_info.dart';
@@ -42,9 +43,12 @@ Future<void> initAppModule() async {
   instance.registerLazySingleton<RemoteDataSource>(
       () => RemoteDataSourceImpl(instance()));
 
+  // LocalDataSource Dependency Injections
+  instance.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImpl());
+
   // Repository Dependency Injections
   instance.registerLazySingleton<Repository>(
-      () => RepositoryImpl(instance(), instance()));
+      () => RepositoryImpl(instance(), instance(), instance()));
 }
 
 initLoginModule() {
