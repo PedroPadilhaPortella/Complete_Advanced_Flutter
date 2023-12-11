@@ -5,7 +5,6 @@ import 'package:complete_advanced_flutter/presentation/common/state_render/state
 import 'package:complete_advanced_flutter/presentation/main/home/home_view_model.dart';
 import 'package:complete_advanced_flutter/presentation/resources/color_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/routes_manager.dart';
-// import 'package:complete_advanced_flutter/domain/model.dart';
 import 'package:complete_advanced_flutter/presentation/resources/strings_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/values_manager.dart';
 import 'package:flutter/material.dart';
