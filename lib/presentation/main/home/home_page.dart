@@ -7,6 +7,7 @@ import 'package:complete_advanced_flutter/presentation/resources/color_manager.d
 import 'package:complete_advanced_flutter/presentation/resources/routes_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/strings_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/values_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -64,9 +65,9 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _getBanners(snapshot.data?.banners),
-              _getSection(AppStrings.services),
+              _getSection(AppStrings.services.tr()),
               _getServices(snapshot.data?.services),
-              _getSection(AppStrings.stores),
+              _getSection(AppStrings.stores.tr()),
               _getStores(snapshot.data?.stores),
             ],
           );

@@ -55,5 +55,8 @@
   "contact_us": "Contate-nos",
   "invite_your_friends": "Convite para Amigos",
   "logout": "Sair",
-  "reset_password": "Redefinir Senha"
+  "reset_password": "Redefinir Senha",
+  "lang_english": "Inglês",
+  "lang_arabic": "Arabe",
+  "lang_portuguese": "Português"
 }

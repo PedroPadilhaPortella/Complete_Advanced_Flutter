@@ -8,6 +8,7 @@ import 'package:complete_advanced_flutter/presentation/common/freezed_data_class
 import 'package:complete_advanced_flutter/presentation/common/state_render/state_render.dart';
 import 'package:complete_advanced_flutter/presentation/common/state_render/state_render_impl.dart';
 import 'package:complete_advanced_flutter/presentation/resources/strings_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 abstract class RegisterViewModelInputs {
   setUserName(String userName);
@@ -228,21 +229,23 @@ class RegisterViewModel extends BaseViewModel
 
   /* Outputs Errors */
   @override
-  Stream<String?> get outputErrorUserName => outputIsUserNameValid.map(
-      (isUserNameValid) => isUserNameValid ? null : AppStrings.invalidUsername);
+  Stream<String?> get outputErrorUserName =>
+      outputIsUserNameValid.map((isUserNameValid) =>
+          isUserNameValid ? null : AppStrings.invalidUsername.tr());
 
   @override
-  Stream<String?> get outputErrorEmail => outputIsEmailValid
-      .map((isEmailValid) => isEmailValid ? null : AppStrings.invalidEmail);
+  Stream<String?> get outputErrorEmail => outputIsEmailValid.map(
+      (isEmailValid) => isEmailValid ? null : AppStrings.invalidEmail.tr());
 
   @override
   Stream<String?> get outputErrorMobileNumber =>
       outputIsMobileNumberValid.map((isMobileNumberValid) =>
-          isMobileNumberValid ? null : AppStrings.invalidMobileNumber);
+          isMobileNumberValid ? null : AppStrings.invalidMobileNumber.tr());
 
   @override
-  Stream<String?> get outputErrorPassword => outputIsPasswordValid.map(
-      (isPasswordValid) => isPasswordValid ? null : AppStrings.invalidPassword);
+  Stream<String?> get outputErrorPassword =>
+      outputIsPasswordValid.map((isPasswordValid) =>
+          isPasswordValid ? null : AppStrings.invalidPassword.tr());
 
   /* Private Methods */
   _validate() {

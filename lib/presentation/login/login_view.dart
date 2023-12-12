@@ -5,6 +5,7 @@ import 'package:complete_advanced_flutter/presentation/login/login_view_model.da
 import 'package:complete_advanced_flutter/presentation/resources/color_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/strings_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/values_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
@@ -96,11 +97,11 @@ class _LoginViewState extends State<LoginView> {
                       keyboardType: TextInputType.emailAddress,
                       controller: _userNameController,
                       decoration: InputDecoration(
-                        hintText: AppStrings.username,
-                        labelText: AppStrings.username,
+                        hintText: AppStrings.username.tr(),
+                        labelText: AppStrings.username.tr(),
                         errorText: (snapshot.data ?? true)
                             ? null
-                            : AppStrings.usernameError,
+                            : AppStrings.invalidUsername.tr(),
                       ),
                     );
                   },
@@ -119,11 +120,11 @@ class _LoginViewState extends State<LoginView> {
                       keyboardType: TextInputType.visiblePassword,
                       controller: _passwordController,
                       decoration: InputDecoration(
-                        hintText: AppStrings.password,
-                        labelText: AppStrings.password,
+                        hintText: AppStrings.password.tr(),
+                        labelText: AppStrings.password.tr(),
                         errorText: (snapshot.data ?? true)
                             ? null
-                            : AppStrings.passwordError,
+                            : AppStrings.invalidPassword.tr(),
                       ),
                     );
                   },
@@ -145,7 +146,7 @@ class _LoginViewState extends State<LoginView> {
                         onPressed: (snapshot.data ?? false)
                             ? () => _viewModel.login()
                             : null,
-                        child: Text(AppStrings.login),
+                        child: Text(AppStrings.login).tr(),
                       ),
                     );
                   },
@@ -170,7 +171,7 @@ class _LoginViewState extends State<LoginView> {
                       child: Text(
                         AppStrings.forgetPassword,
                         style: Theme.of(context).textTheme.subtitle2,
-                      ),
+                      ).tr(),
                     ),
                     TextButton(
                       onPressed: () {
@@ -182,7 +183,7 @@ class _LoginViewState extends State<LoginView> {
                       child: Text(
                         AppStrings.registerText,
                         style: Theme.of(context).textTheme.subtitle2,
-                      ),
+                      ).tr(),
                     )
                   ],
                 ),

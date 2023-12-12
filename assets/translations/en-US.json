@@ -55,5 +55,7 @@
   "contact_us": "Contact Us",
   "invite_your_friends": "Invite Your Friends",
   "logout": "Logout",
-  "reset_password": "Reset Password"
+  "lang_english": "English",
+  "lang_arabic": "Arabic",
+  "lang_portuguese": "Portuguese"
 }

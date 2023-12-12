@@ -3,6 +3,7 @@ import 'package:complete_advanced_flutter/app/dependency_injection.dart';
 import 'package:complete_advanced_flutter/presentation/onboarding/onboarding_view_model.dart';
 import 'package:complete_advanced_flutter/presentation/resources/strings_manager.dart';
 import 'package:complete_advanced_flutter/presentation/resources/values_manager.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -92,7 +93,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                     AppStrings.skip,
                     textAlign: TextAlign.end,
                     style: Theme.of(context).textTheme.subtitle2,
-                  ),
+                  ).tr(),
                 ),
               ),
               _getBottomSheetWidget(slideViewObject)
