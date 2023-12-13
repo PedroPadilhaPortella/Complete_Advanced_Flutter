@@ -66,7 +66,7 @@ class RegisterViewModel extends BaseViewModel
       StreamController<void>.broadcast();
 
   final StreamController isUserLoggedInSuccessfullyStreamController =
-      StreamController<bool>();
+      StreamController<String>();
 
   RegisterViewModel(this._registerUseCase);
 
@@ -177,7 +177,7 @@ class RegisterViewModel extends BaseViewModel
       },
       (data) {
         inputState.add(ContentState());
-        isUserLoggedInSuccessfullyStreamController.add(true);
+        isUserLoggedInSuccessfullyStreamController.add("register-user-token");
       },
     );
   }

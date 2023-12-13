@@ -39,7 +39,7 @@ class LoginViewModel extends BaseViewModel
       StreamController<void>.broadcast();
 
   final StreamController isUserLoggedInSuccessfullyStreamController =
-      StreamController<bool>();
+      StreamController<String>();
 
   LoginViewModel(this._loginUseCase);
 
@@ -89,7 +89,7 @@ class LoginViewModel extends BaseViewModel
       },
       (data) {
         inputState.add(ContentState());
-        isUserLoggedInSuccessfullyStreamController.add(true);
+        isUserLoggedInSuccessfullyStreamController.add("login-user-token");
       },
     );
   }

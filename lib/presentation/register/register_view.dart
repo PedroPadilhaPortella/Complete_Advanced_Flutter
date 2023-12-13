@@ -76,9 +76,11 @@ class _RegisterViewState extends State<RegisterView> {
     });
 
     _viewModel.isUserLoggedInSuccessfullyStreamController.stream
-        .listen((isSuccessfullyLoggedIn) {
+        .listen((token) {
       SchedulerBinding.instance.addPostFrameCallback((_) {
         _appPreferences.setUserLoggedIn();
+        _appPreferences.setUserToken(token);
+        resetModules();
         Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
       });
     });
